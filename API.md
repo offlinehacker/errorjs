@@ -169,8 +169,4 @@ Error raised when there was error in a logic
 
 # ErrorFactory
 
-Namespaced errors
-
-## \_context
-
-Context to allways pass to errror as extra parameter
+Error factory which optionally attaches context to errors
