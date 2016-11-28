@@ -1,7 +1,7 @@
 {
   "name": "errorjs",
   "version": "0.0.0",
-  "description": "Connect everything",
+  "description": "Extendable javascript errors",
   "main": "dist/index.js",
   "scripts": {
     "eslint": "eslint .",
