@@ -14,6 +14,7 @@
     "debug": "node debug --harmony-async-await -r babel-core/register",
     "start": "node --harmony-async-await -r babel-core/register lib/index.js",
     "compile": "babel -d dist lib",
+    "docs": "documentation build -f md lib > API.md",
     "prepublish": "npm run compile"
   },
   "author": "Jaka Hudoklin <jakahudoklin@gmail.com>",
