@@ -15,7 +15,8 @@
     "start": "node -r babel-core/register lib/index.js",
     "compile": "babel -d dist lib",
     "gen-docs": "documentation build -f md lib > API.md",
-    "prepublish": "npm run compile && npm run gen-docs"
+    "prepublish": "npm run compile && npm run gen-docs",
+    "release": "np"
   },
   "author": "Jaka Hudoklin <jakahudoklin@gmail.com>",
   "license": "MIT",
@@ -35,7 +36,8 @@
     "eslint-plugin-mocha": "^4.7.0",
     "flow-bin": "^0.35.0",
     "flow-typed": "^2.0.0",
-    "mocha": "^3.1.2"
+    "mocha": "^3.1.2",
+    "np": "^2.10.1"
   },
   "eslintConfig": {
     "extends": [
