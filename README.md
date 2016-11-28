@@ -1,0 +1,3 @@
+# errorjs
+
+Extendable javascript errors
