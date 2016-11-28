@@ -105,7 +105,7 @@ Converts error to JSON
 
 # NotImplementedError
 
-**Extends Error**
+**Extends GeneralError**
 
 NotImplementedError
 
@@ -113,7 +113,7 @@ Error raised when functionality is not implemented
 
 # InternalError
 
-**Extends Error**
+**Extends GeneralError**
 
 InternalError
 
@@ -121,7 +121,7 @@ Error raised when there has been internal error
 
 # NotFoundError
 
-**Extends Error**
+**Extends GeneralError**
 
 NotFoundError
 
@@ -129,7 +129,7 @@ Error raised when something is not found
 
 # UnauthorizedError
 
-**Extends Error**
+**Extends GeneralError**
 
 UnauthorizedError
 
@@ -137,7 +137,7 @@ Error raised when access has been unauthorized
 
 # ConnectionError
 
-**Extends Error**
+**Extends GeneralError**
 
 ConnectionError
 
@@ -145,7 +145,7 @@ Error raised when there has been error with a connection
 
 # ValidationError
 
-**Extends Error**
+**Extends GeneralError**
 
 ValidationError
 
@@ -153,7 +153,7 @@ Error raised when there has been error with validation
 
 # ConflictError
 
-**Extends Error**
+**Extends GeneralError**
 
 ConflictError
 
@@ -161,7 +161,7 @@ Error raised when there has been conflict
 
 # LogicalError
 
-**Extends Error**
+**Extends GeneralError**
 
 LogicalError
 
