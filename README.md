@@ -1,4 +1,4 @@
-# errorjs
+# ErrorJS
 
 Extendable javascript errors
 
