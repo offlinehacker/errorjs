@@ -16,11 +16,11 @@ describe('ErrorFactory', () => {
     });
 
     it('should create error with context', () => {
-        const errorFactory = new ErrorFactory({
-            namespace: 'abcd'
-        });
+        const parentErrorFactory = new ErrorFactory();
+        const errorFactory = parentErrorFactory.withContext({namespace: 'abcd'});
         const error = new errorFactory.GeneralError({code: 'some_error_code'});
 
         expect(error.extra).to.be.deep.equal({namespace: 'abcd'});
+        expect(error).to.be.instanceof(parentErrorFactory.GeneralError);
     });
 });
