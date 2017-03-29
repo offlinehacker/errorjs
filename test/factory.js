@@ -37,7 +37,7 @@ describe('ErrorFactory', () => {
             }
         }
 
-        class MyErrorFactory extends factory.Factory {
+        class MyErrorFactory extends factory.ErrorFactory {
             MyError: typeof MyError;
 
             constructor(context: ?Object) {
