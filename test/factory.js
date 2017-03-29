@@ -9,7 +9,7 @@ const GeneralError = require('../lib/error');
 
 describe('ErrorFactory', () => {
     it('should create a new ErrorFactory', () => {
-        new ErrorFactory();
+        new ErrorFactory(); // eslint-disable-line no-new
     });
 
     it('should create error using ErrorFactory', () => {
@@ -38,7 +38,7 @@ describe('ErrorFactory', () => {
         }
 
         class MyErrorFactory extends factory.Factory {
-            MyError:  Class<MyError>;
+            MyError: typeof MyError;
 
             constructor(context: ?Object) {
                 super(context);
