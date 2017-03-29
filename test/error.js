@@ -6,9 +6,8 @@ const BaseError = require('../lib/error');
 
 describe('Error', () => {
     it('should create simple error', () => {
-        const error = new BaseError({code: 'some_error'});
+        const error = new BaseError('some_error');
         expect(error.code).to.be.equal('some_error');
-
         expect(error.message).to.be.equal('[code=some_error]');
     });
 
@@ -18,11 +17,10 @@ describe('Error', () => {
 
     it('should create complex error', () => {
         const parentError = new Error();
-        const error = new BaseError({
+        const error = new BaseError('some_error_code', 'this is my message', {
             code: 'some_error_code',
             error: parentError,
-            message: 'this is my message',
-            extra: {
+            context: {
                 key: 'value'
             }
         });
@@ -31,6 +29,6 @@ describe('Error', () => {
         expect(error.message)
             .to.be.equal('[code=some_error_code,key=value] this is my message');
         expect(error.error).to.be.equal(parentError);
-        expect(error.extra).to.be.deep.equal({key: 'value'});
+        expect(error.context).to.be.deep.equal({key: 'value'});
     });
 });
