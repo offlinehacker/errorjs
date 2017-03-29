@@ -15,8 +15,8 @@
     "start": "node -r babel-core/register lib/index.js",
     "compile": "babel -d dist lib",
     "gen-docs": "documentation build -f md lib > API.md",
-    "prepublish": "npm run compile && npm run gen-docs",
-    "release": "np"
+    "release": "np",
+    "version": "npm run compile && npm run gen-docs && git add API.md"
   },
   "author": "Jaka Hudoklin <jakahudoklin@gmail.com>",
   "license": "MIT",
