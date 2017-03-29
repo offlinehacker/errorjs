@@ -9,13 +9,13 @@ Base error for all other errors
 **Examples**
 
 ```javascript
+**Extending an error:**
+
 const GeneralError = require('errorjs').GeneralError;
 
 class MyFatalError extends GeneralError {
-  constructor() {
-     get meta() {
-         return {httpCode: 500}
-     }
+  get meta() {
+    return {httpCode: 500}
   }
 }
 ```
@@ -70,7 +70,7 @@ Returns **[Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refere
 
 ## context
 
-Extra error information
+Context associated with an error
 
 **Examples**
 
@@ -107,6 +107,32 @@ Creates new error
 ## toJSON
 
 Converts error to JSON
+
+## withContext
+
+Defines error class with predefined context. This allows to reuse error
+context.
+
+Note: this is usually used by factory to define group of errors with
+some context.
+
+**Parameters**
+
+-   `context` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)?** 
+
+**Examples**
+
+```javascript
+const errors = require('errorjs');
+
+const userUnauthorizedError = new errors.UnauthorizedError.withContext({
+  userId: 'afece0d2-53a9-4610-b3de-0a8501cd3b91'
+});
+
+const error = new userUnauthorizedError('user_not_allowed');
+```
+
+Returns **Class&lt;E>** 
 
 # NotImplementedError
 
@@ -196,4 +222,46 @@ class MyErrorFactory extends errors.ErrorFactory {
 }
 
 module.exports = new MyErrorFactory();
+```
+
+## withContext
+
+Defines factory class with predefined context. This allows to reuse error
+context.
+
+**Parameters**
+
+-   `context` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)?** 
+
+**Examples**
+
+```javascript
+const errors = require('errorjs');
+
+const userErrors = errors.withContext({
+  userId: 'afece0d2-53a9-4610-b3de-0a8501cd3b91'
+});
+
+const error = new userErrors.UnauthorizedError('user_not_allowed');
+```
+
+Returns **F** 
+
+# ExtendedErrorFactory
+
+**Extends ErrorFactory**
+
+Main error factory
+
+**Examples**
+
+```javascript
+**Creating error:**
+
+const errors = require('errorjs');
+
+const error = new errors.UnautorizedError('user_not_admin', 'Admin user needed', {
+  error: new Error('parrent error'),
+  context: {userId: 'afece0d2-53a9-4610-b3de-0a8501cd3b91'}
+});
 ```
