@@ -185,7 +185,7 @@ const errors = require('errorjs');
 
 class MyError extends errors.NotFoundError {}
 
-class MyErrorFactory extends errors.Factory {
+class MyErrorFactory extends errors.ErrorFactory {
     MyError: typeof MyError
 
     constructor(context: ?Object) {
