@@ -16,19 +16,15 @@ describe('Error', () => {
     });
 
     it('should create complex error', () => {
-        const parentError = new Error();
-        const error = new BaseError('some_error_code', 'this is my message', {
-            code: 'some_error_code',
-            error: parentError,
-            context: {
-                key: 'value'
-            }
+        const parentError = new Error('message');
+        const error = new BaseError('some_error_code', 'this is my message', parentError, {
+            key: 'value'
         });
 
         expect(error.code).to.be.equal('some_error_code');
         expect(error.message)
-            .to.be.equal('[code=some_error_code,key=value] this is my message');
-        expect(error.error).to.be.equal(parentError);
+            .to.be.equal('[code=some_error_code,key=value] this is my message\n  Error: message');
+        expect(error.errors[0]).to.be.equal(parentError);
         expect(error.context).to.be.deep.equal({key: 'value'});
     });
 });
