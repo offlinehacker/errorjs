@@ -2,6 +2,8 @@
 
 # ErrorJS
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/offlinehacker/errorjs.svg)](https://greenkeeper.io/)
+
 Extendable javascript errors
 
 ## Description
