@@ -1,7 +1,14 @@
 import BaseError from "../src/error";
 
 describe("BaseError", () => {
-  it("should create a simple error", () => {
+  it("should create simple error", () => {
+    const error = new BaseError("some_error_code");
+
+    expect(error.code).toBe("some_error_code");
+    expect(error.message).toBe("[code=some_error_code]");
+  });
+
+  it("should create a complex error", () => {
     const baseError = new Error("some other error");
     const error = new BaseError("some_error_code", "some message", baseError, {
       key: "value"
@@ -16,6 +23,16 @@ describe("BaseError", () => {
     );
     expect(error.userMessage).toBe("some message");
     expect(error.context).toEqual({ key: "value" });
+    expect(error.toJSON()).toEqual({
+      id: error.id,
+      code: error.code,
+      message: error.message,
+      context: error.context
+    });
+  });
+
+  it("should not create error without error code", () => {
+    expect(() => new BaseError()).toThrow(/error code must be defined/);
   });
 
   it("should provide default user message", () => {
