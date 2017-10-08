@@ -1,6 +1,11 @@
 import BaseError from "./error";
 import ErrorFactory from "./factory";
 
+/**
+ * ExtendedErrorFactory
+ *
+ * ExtendedErrorFactory is error factory with predefined common errors
+ */
 export default class ExtendedErrorFactory extends ErrorFactory {
   BaseError = class HttpBaseError extends BaseError {
     httpCode: number = 500;

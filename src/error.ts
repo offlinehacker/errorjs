@@ -1,11 +1,12 @@
 /**
  * BaseError
  *
- * BaseError is base class for all other errors
+ * `BaseError` is base class for all other errors. It extends
+ * `Error` class with additional functionality.
  */
 export default class BaseError extends Error {
   /**
-   * Error id
+   * Unique error id
    *
    * @example n8lqujm20w4ckw40scss0o8coco0o004k0oc808o0osksooc'
    */
@@ -43,7 +44,19 @@ export default class BaseError extends Error {
   public errorMessage?: string;
 
   /**
-   * User formatted message
+   * Gets user formatted message.
+   *
+   * @example
+   *
+   * class UserError extends BaseError {
+   *   get userMessage() {
+   *     if (this.context.userId) {
+   *       return `There was error with user ${this.context.userId}`;
+   *     }
+   *
+   *     return super.userMessage;
+   *   }
+   * }
    */
   public get userMessage() {
     return this.errorMessage || this.defaultUserMessage;
@@ -61,6 +74,9 @@ export default class BaseError extends Error {
    */
   public context: any = {};
 
+  /**
+   * Default message if user does not provide one
+   */
   public defaultUserMessage: string;
 
   /** Creates new error */
@@ -99,13 +115,11 @@ export default class BaseError extends Error {
    *
    * @example
    *
-   * const errors = require('errorjs');
-   *
-   * const userUnauthorizedError = new errors.UnauthorizedError.withContext({
+   * const error = new BaseError.withContext({
    *   userId: 'afece0d2-53a9-4610-b3de-0a8501cd3b91'
    * });
    *
-   * const error = new userUnauthorizedError('user_not_allowed');
+   * const error = new error('user_not_allowed');
    */
   public static withContext<E extends typeof BaseError>(
     this: E,
@@ -118,6 +132,9 @@ export default class BaseError extends Error {
     } as any;
   }
 
+  /**
+   * Error message formatting method
+   */
   formatMessage() {
     let message: string;
 
@@ -141,6 +158,19 @@ export default class BaseError extends Error {
 
   /**
    * Converts error to JSON
+   *
+   * @example
+   *
+   * > error.toJSON();
+   *
+   * {
+   *   id: "n8lqujm20w4ckw40scss0o8coco0o004k0oc808o0osksooc",
+   *   code: "entity_not_found",
+   *   message: "entity was not found in the database"
+   *   context: {
+   *     id: "1"
+   *   }
+   * }
    */
   public toJSON() {
     return {

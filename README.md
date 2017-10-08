@@ -161,7 +161,9 @@ error.isVeryBadError // <-- extended functionality here
 throw new factory.MyError('some_error_code');
 ```
 
-## Example
+## Examples
+
+### TypeScript
 
 ```javascript
 import {ExtendedErrorFactory} from 'errorjs';
@@ -184,6 +186,46 @@ class MyErrorFactory extends ExtendedErrorFactory {
       }
     }
   );
+}
+
+const errorFactory = new MyErrorFactory();
+
+const userErrors = factory.withContext({userId: '<some_user_id>'});
+
+throw new userErrors.TransactionError('transaction_not_found', 'transaction was not found', {
+  id: '<transaction_id>
+});
+```
+
+### JavaScript
+
+```javascript
+const {ExtendedErrorFactory} = require('errorjs');
+
+class MyErrorFactory extends ExtendedErrorFactory {
+  constructor(...args) {
+    super(...args);
+
+    this.BaseError = class MyBaseError extends this.BaseError {
+      scope = 'global';
+
+      get isUserError() {
+        return this.context.userId;
+      }
+    };
+
+    this.TransactionError = this.defineErrorClass(
+      class TransactionError extends this.ConflictError {
+        get scope() {
+          return 'transaction';
+        }
+
+        get userMessage() {
+          return `{${this.scope}} ${super.userMessage}`;
+        }
+      }
+    );
+  }
 }
 
 const errorFactory = new MyErrorFactory();
