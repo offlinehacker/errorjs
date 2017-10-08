@@ -1,5 +1,6 @@
 # ErrorJS
 
+[![NPM Version](https://badge.fury.io/js/errorjs.svg)](http://badge.fury.io/js/errorjs)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![Greenkeeper badge](https://badges.greenkeeper.io/offlinehacker/errorjs.svg)](https://greenkeeper.io/)
 [![Travis](https://img.shields.io/travis/offlinehacker/errorjs.svg)](https://travis-ci.org/offlinehacker/errorjs)
