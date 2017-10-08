@@ -249,4 +249,4 @@ throw new userErrors.TransactionError('transaction_not_found', 'transaction was 
 
 ## Credits
 
-Made with :heart: by [@alexjoverm](https://twitter.com/offlinehacker)
+Made with :heart: by [@offlinehacker](https://twitter.com/offlinehacker)
