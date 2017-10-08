@@ -1,6 +1,6 @@
 {
   "name": "errorjs",
-  "version": "0.0.0-development",
+  "version": "0.9.1",
   "description": "",
   "keywords": [],
   "main": "dist/errorjs",
@@ -19,11 +19,10 @@
   "engines": {
     "node": ">=6.0.0"
   },
-  "private": true,
   "scripts": {
     "lint": "tslint -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf dist",
-    "build": "tsc && rollup -c && rimraf compiled && typedoc --out dist/docs --target es6 --theme minimal src",
+    "build": "tsc && rollup -c && rimraf compiled && typedoc --out dist/docs --target es6 --theme default src",
     "start": "tsc -w & rollup -c -w",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -101,7 +100,7 @@
     "tslint-config-prettier": "^1.1.0",
     "tslint-config-standard": "^6.0.0",
     "typedoc": "^0.8.0",
-    "typescript": "^2.5.3",
+    "typescript": "^2.6.0-dev.20171007",
     "validate-commit-msg": "^2.12.2"
   }
 }
