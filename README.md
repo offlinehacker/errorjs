@@ -193,7 +193,7 @@ const errorFactory = new MyErrorFactory();
 const userErrors = factory.withContext({userId: '<some_user_id>'});
 
 throw new userErrors.TransactionError('transaction_not_found', 'transaction was not found', {
-  id: '<transaction_id>
+  id: '<transaction_id>'
 });
 ```
 
@@ -233,7 +233,7 @@ const errorFactory = new MyErrorFactory();
 const userErrors = factory.withContext({userId: '<some_user_id>'});
 
 throw new userErrors.TransactionError('transaction_not_found', 'transaction was not found', {
-  id: '<transaction_id>
+  id: '<transaction_id>'
 });
 ```
 
