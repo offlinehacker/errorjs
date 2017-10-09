@@ -6,7 +6,7 @@
   "main": "dist/errorjs",
   "module": "dist/errorjs.esm.js",
   "browser": "dist/errorjs.umd.js",
-  "typings": "dist/errorjs.d.ts",
+  "typings": "dist/types/errorjs.d.ts",
   "files": [
     "dist"
   ],
