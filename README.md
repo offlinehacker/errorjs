@@ -26,7 +26,7 @@ npm install --save errorjs
 
 ### Sane predefined errors
 
-ErrorJS has a list of predefined error defined, that you can reuse while devloping a service.
+ErrorJS has a list of predefined errors, that you can reuse while devloping a service.
 
 ```javascript
 import {
@@ -52,7 +52,7 @@ throw new LogicalError('some_logic_error');
 
 ### Enforced error codes
 
-Every error has to have error code provided, which should uniquely identify an error
+Every error must have error code provided, which should uniquely identify an error
 
 ```javascript
 import {ConflictError} from 'errorjs';
@@ -73,7 +73,7 @@ import {ConflictError} from 'errorjs';
 throw new ConflictError('some_error_code', {some: 'context'});
 ```
 
-**Predefined error context**
+**Error class with predefined error context**
 
 ```javascript
 const ConflictWithContext = ConflictError.withContext({some: 'context'});
@@ -93,9 +93,9 @@ const error = new contextErrors.ConflictError('user_exists', {errorId: '<some_er
 error.context // {userId: '<some_user_id>', errorId: '<some_error_id>'}
 ```
 
-### Support for base Errors
+### Support for child errors
 
-Base errors can be passed to an error to encapsulate child error
+Child errors can be passed to an error to encapsulate errors
 
 ```javascript
 import {ConflictError} from 'errorjs';
